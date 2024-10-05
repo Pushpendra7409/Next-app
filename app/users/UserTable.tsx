@@ -13,7 +13,7 @@ interface Props {
 }
 
 const UserTable = async ({ sortOrder }: Props) => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users", { cache: 'no-store'}) 
+    const res = await fetch("https://jsonplaceholder.typicode.com/xusers", { cache: 'no-store'}) 
     // { next: {revalidate: 10}} cache function is only implemented in fetch function
     const users: User[] = await res.json()
 
