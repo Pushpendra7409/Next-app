@@ -27,4 +27,18 @@ export function GET(
          //updated user
          //Return the updated user
          return NextResponse.json({ id: 1, name: body.name }, { status: 200 });
-        }
+}
+
+export function DELETE(
+   request: NextRequest,
+   { params }: {params: { id: number }}
+) {
+   //Fetch user fom db
+   if(params.id > 10)
+      return NextResponse.json({ error: 'User Not found'}, { status: 404})
+   //If not found return 404
+
+   return NextResponse.json({});
+   //Delete the user
+   //return 200
+}
