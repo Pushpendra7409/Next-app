@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import schema from "./schemas";
 
 export function GET(request: NextRequest) {
     //fetch users from DB
