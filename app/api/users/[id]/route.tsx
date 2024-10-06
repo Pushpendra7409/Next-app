@@ -48,14 +48,22 @@ export async function GET(
          return NextResponse.json(updatedUser, { status: 200 });
 }
 
-export function DELETE(
+export async function DELETE(
    request: NextRequest,
-   { params }: {params: { id: number }}
+   { params }: {params: { id: string }}
 ) {
+
+   const user = await prisma.user.findUnique({
+      where: { id: parseInt(params.id) },
+   })
    //Fetch user fom db
-   if(params.id > 10)
+   if(!user)
       return NextResponse.json({ error: 'User Not found'}, { status: 404})
    //If not found return 404
+
+      await prisma.user.delete({
+         where: { id: user?.id },
+      })
 
    return NextResponse.json({});
    //Delete the user
