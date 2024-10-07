@@ -7,9 +7,8 @@ export default async function Home() {
   const session = await getServerSession(authOptions)
   return (
    <main>
-    <h1>Hello { session && <span>{session.user!.name}</span> }</h1>
-    {/* <a href="/users">Users</a>   we don't use a tag for routing we simply use Link for better optimization*/} 
     <Link href="/users">Users</Link>
+    <h1>Hello { session && <span>{session.user!.name}</span> }</h1>
     <ProductCard />
     </main>
   );
